@@ -1,0 +1,2 @@
+npm run assign:shards         
+npm run assign:shards -- --force

@@ -1,0 +1,35 @@
+{
+  "name": "price-tracker",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "bin": "dist/app.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build:be": "rimraf dist && tsc",
+    "build:fe": "npm --prefix ../PriceTrackerWeb run build",
+    "copy:fe": "rimraf public && mkdir public && xcopy ..\\PriceTrackerWeb\\dist public /E /I /Y",
+    "build": "npm run build:be && npm run build:fe && npm run copy:fe",
+    "start": "node dist/server.js",
+    "assign:shards": "tsx src/scripts/assignShards.ts"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.23",
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.18.0",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^1.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^24.3.0",
+    "@types/nodemailer": "^6.4.14",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

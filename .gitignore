@@ -1,0 +1,42 @@
+# Genel Loglar
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node.js Ortak
+node_modules/
+*.tsbuildinfo
+
+# Environment Dosyaları (gizli)
+# .env
+# .env.local
+# .env.*.local
+
+# Backend (price-tracker)
+price-tracker/dist/
+price-tracker/build/
+price-tracker/public/assets/
+price-tracker/public/index.html
+price-tracker/public/vite.svg
+
+# Frontend (PriceTrackerWeb)
+PriceTrackerWeb/dist/
+PriceTrackerWeb/dist-ssr/
+PriceTrackerWeb/.cache/
+PriceTrackerWeb/vite.config.ts.timestamp*
+
+# IDE / Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
