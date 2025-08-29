@@ -21,3 +21,24 @@ export const updateAlarm = async (id: string, alarmPrice: number) => {
   const res = await api.put(`${API_URL}/${id}/alarm`, { alarmPrice });
   return res.data;
 };
+
+// 🔍 Yeni: Ürün arama
+export type SearchResponse = {
+  items: IProduct[];
+  total: number;
+  page: number;
+  limit: number;
+  pages: number;
+  hasMore?: boolean;
+};
+
+export const searchProducts = async (
+  q: string,
+  page = 1,
+  limit = 20
+): Promise<SearchResponse> => {
+  const res = await api.get(`${API_URL}/search`, {
+    params: { q, page, limit },
+  });
+  return res.data;
+};

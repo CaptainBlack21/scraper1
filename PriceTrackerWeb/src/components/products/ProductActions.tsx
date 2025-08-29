@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { addProduct } from "../../api/productApi";
+import "../../FormStyles.css"; // ✅ css import
 
 interface Props {
   onRefresh: () => void;
@@ -8,6 +9,7 @@ interface Props {
 const ProductActions: React.FC<Props> = ({ onRefresh }) => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
+  const [isFocused, setIsFocused] = useState(false); // ✅ focus state
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,77 +29,44 @@ const ProductActions: React.FC<Props> = ({ onRefresh }) => {
 
   return (
     <div style={{ width: "100%", marginBottom: 20 }}>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          width: "100%",
-          flexWrap: "nowrap",
-        }}
-      >
+      <form onSubmit={handleSubmit} className="form-bar">
         <input
+          className="form-input"
           type="text"
           value={url}
           onChange={(e) => {
             setUrl(e.target.value);
             if (error) setError("");
           }}
-          placeholder="Amazon ürün URL'si"
-          style={{
-            flex: "1 1 0",     // boş alanı kaplasın
-            minWidth: 150,
-            maxWidth: "100%",
-            padding: 8,
-            borderRadius: 6,
-            border: "1px solid #ccc",
-            boxSizing: "border-box",
-          }}
+          placeholder={isFocused ? "" : "Amazon ürün URL'si"}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
 
-        <button
-          type="submit"
-          style={{
-            padding: "8px 16px",
-            borderRadius: 6,
-            border: "none",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            cursor: "pointer",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Ekle
+        <button type="submit" className="form-button form-button--primary">
+          ➕ Ekle
         </button>
 
         <button
           type="button"
           onClick={onRefresh}
-          style={{
-            padding: "8px 16px",
-            borderRadius: 6,
-            border: "none",
-            backgroundColor: "#28a745",
-            color: "#fff",
-            cursor: "pointer",
-            whiteSpace: "nowrap",
-          }}
+          className="form-button form-button--success"
         >
-          Yenile
+          🔄 Yenile
         </button>
       </form>
 
       {error && (
         <span
           style={{
-            color: "red",
-            fontSize: 12,
-            marginTop: 5,
+            color: "#dc2626",
+            fontSize: 13,
+            marginTop: 6,
             display: "block",
+            fontWeight: 500,
           }}
         >
-          {error}
+          ⚠ {error}
         </span>
       )}
     </div>

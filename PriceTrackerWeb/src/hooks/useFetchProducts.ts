@@ -7,7 +7,6 @@ export const useFetchProducts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // ✅ useCallback: referans sabit kalır, dependency loop engellenir
   const fetchProducts = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -23,7 +22,8 @@ export const useFetchProducts = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]); // dependency safe
+  }, [fetchProducts]);
 
-  return { products, loading, error, fetchProducts };
+  // 🔑 setProducts export edildi
+  return { products, setProducts, loading, error, fetchProducts };
 };

@@ -1,0 +1,44 @@
+.form-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 2px solid #3b82f6; /* mavi kenarlık */
+  border-radius: 50px;
+  background: #f0f9ff;       /* açık mavi arka plan */
+  box-sizing: border-box;
+}
+
+.form-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  color: #111827;            /* yazı rengi */
+}
+
+.form-input::placeholder {
+  color: #6b7280;            /* gri placeholder */
+}
+
+.form-button {
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #fff;
+}
+
+.form-button--primary {
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+}
+
+.form-button--success {
+  background: #22c55e;
+}
